@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechStore - Eletrônicos Premium</title>
+    <title>TechStore - Eletrônicos Premium | Smartphones, Fones e Periféricos</title>
+    <meta name="description" content="Compre os melhores eletrônicos na TechStore. Smartphones, fones de ouvido, periféricos gamers e muito mais com entrega rápida e garantia.">
+    <meta name="keywords" content="eletrônicos, smartphones, fones de ouvido, periféricos, techstore, tecnologia">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -43,13 +45,19 @@
 
         /* Header */
         header {
-            background: rgba(15, 15, 26, 0.8);
+            background: rgba(15, 15, 26, 0.95);
             backdrop-filter: blur(10px);
-            padding: 1.5rem 5%;
+            padding: 1.2rem 5%;
             position: sticky;
             top: 0;
             z-index: 100;
             border-bottom: 1px solid rgba(138, 43, 226, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 0.8rem 5%;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
         }
 
         .navbar {
@@ -66,6 +74,13 @@
             background-clip: text;
             color: transparent;
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo i {
+            font-size: 1.5rem;
         }
 
         .nav-links {
@@ -103,6 +118,7 @@
         .nav-icons {
             display: flex;
             gap: 1.5rem;
+            position: relative;
         }
 
         .nav-icons i {
@@ -114,6 +130,22 @@
         .nav-icons i:hover {
             color: var(--primary);
             transform: translateY(-3px);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.7rem;
+            font-weight: bold;
         }
 
         /* Hero Section */
@@ -279,6 +311,50 @@
             color: transparent;
         }
 
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .search-box {
+            display: flex;
+            width: 100%;
+            max-width: 500px;
+            background: rgba(42, 42, 58, 0.6);
+            border-radius: 50px;
+            padding: 0.5rem;
+            border: 1px solid rgba(138, 43, 226, 0.3);
+        }
+
+        .search-box input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            padding: 0.5rem 1rem;
+            color: var(--light);
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .search-box button {
+            background: var(--gradient);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .search-box button:hover {
+            transform: scale(1.05);
+        }
+
         .category-filters {
             display: flex;
             justify-content: center;
@@ -305,7 +381,7 @@
 
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 1.5rem;
         }
 
@@ -537,6 +613,7 @@
             justify-content: center;
             align-items: center;
             padding: 1rem;
+            position: relative;
         }
 
         .product-detail-image img {
@@ -544,6 +621,91 @@
             max-height: 400px;
             border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: opacity 0.3s ease;
+        }
+
+        /* Carousel styles */
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+            height: 100%;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, var(--dark), var(--gray));
+        }
+
+        .carousel-slide img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .carousel-btn:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .carousel-prev {
+            left: 10px;
+        }
+
+        .carousel-next {
+            right: 10px;
+        }
+
+        .carousel-indicators {
+            position: absolute;
+            bottom: 15px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .carousel-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-indicator.active {
+            background: white;
+            transform: scale(1.2);
         }
 
         .product-detail-info {
@@ -1011,6 +1173,179 @@
             font-size: 0.9rem;
         }
 
+        /* Cart Sidebar */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 100%;
+            max-width: 400px;
+            height: 100vh;
+            background: var(--dark);
+            z-index: 1001;
+            transition: right 0.4s ease;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-sidebar.active {
+            right: 0;
+        }
+
+        .cart-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(138, 43, 226, 0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-title {
+            font-size: 1.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .close-cart:hover {
+            color: var(--secondary);
+            transform: rotate(90deg);
+        }
+
+        .cart-content {
+            flex: 1;
+            padding: 1.5rem;
+            overflow-y: auto;
+        }
+
+        .cart-items {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(42, 42, 58, 0.6);
+            border-radius: 10px;
+            border: 1px solid rgba(138, 43, 226, 0.2);
+        }
+
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(15, 15, 26, 0.5);
+            border-radius: 10px;
+        }
+
+        .cart-item-image img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            color: var(--light);
+        }
+
+        .cart-item-price {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        .cart-item-remove {
+            background: none;
+            border: none;
+            color: #ff6b6b;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cart-item-remove:hover {
+            transform: scale(1.1);
+        }
+
+        .cart-empty {
+            text-align: center;
+            padding: 2rem;
+            color: #aaa;
+        }
+
+        .cart-footer {
+            padding: 1.5rem;
+            border-top: 1px solid rgba(138, 43, 226, 0.3);
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .cart-total span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .checkout-button {
+            width: 100%;
+            padding: 1rem;
+            background: var(--gradient);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .checkout-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Loading Spinner */
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--light);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
         /* Animations */
         @keyframes rotateCube {
             0% {
@@ -1149,6 +1484,10 @@
             .animal-options {
                 justify-content: center;
             }
+            
+            .cart-sidebar {
+                max-width: 100%;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1178,7 +1517,9 @@
     <!-- Header -->
     <header>
         <nav class="navbar">
-            <div class="logo" onclick="goToHome()">TechStore</div>
+            <div class="logo" onclick="goToHome()">
+                <i class="fas fa-laptop-code"></i> TechStore
+            </div>
             <div class="nav-links">
                 <a href="#inicio">Início</a>
                 <a href="#produtos">Produtos</a>
@@ -1186,8 +1527,9 @@
                 <a href="#contato">Contato</a>
             </div>
             <div class="nav-icons">
-                <i class="fas fa-search"></i>
-                <i class="fas fa-shopping-cart"></i>
+                <i class="fas fa-search" id="searchToggle"></i>
+                <i class="fas fa-shopping-cart" id="cartToggle"></i>
+                <span class="cart-count">0</span>
                 <i class="fas fa-user"></i>
             </div>
         </nav>
@@ -1248,6 +1590,13 @@
     <section class="products" id="produtos">
         <h2 class="section-title">Nossos Produtos</h2>
         
+        <div class="search-container" id="searchContainer" style="display: none;">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Buscar produtos...">
+                <button id="searchButton"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+        
         <div class="category-filters">
             <button class="category-filter active" data-category="all">Todos</button>
             <button class="category-filter" data-category="perifericos">Periféricos</button>
@@ -1269,7 +1618,20 @@
             </div>
             <div class="modal-content">
                 <div class="product-detail-image">
-                    <img id="modalProductImage" src="" alt="Imagem do Produto">
+                    <div class="carousel" id="productCarousel">
+                        <div class="carousel-track" id="carouselTrack">
+                            <!-- Slides serão inseridos aqui via JavaScript -->
+                        </div>
+                        <button class="carousel-btn carousel-prev" id="carouselPrev">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="carousel-btn carousel-next" id="carouselNext">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        <div class="carousel-indicators" id="carouselIndicators">
+                            <!-- Indicadores serão inseridos aqui via JavaScript -->
+                        </div>
+                    </div>
                 </div>
                 <div class="product-detail-info">
                     <div class="product-detail-brand" id="modalProductBrand"></div>
@@ -1313,6 +1675,31 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2 class="cart-title">Seu Carrinho</h2>
+            <button class="close-cart" id="closeCart">&times;</button>
+        </div>
+        <div class="cart-content">
+            <div class="cart-items" id="cartItems">
+                <!-- Itens do carrinho serão inseridos aqui -->
+            </div>
+            <div class="cart-empty" id="cartEmpty">
+                <i class="fas fa-shopping-cart" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+                <p>Seu carrinho está vazio</p>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                Total: <span id="cartTotal">R$ 0,00</span>
+            </div>
+            <button class="checkout-button" id="checkoutButton">
+                Finalizar Compra
+            </button>
         </div>
     </div>
 
@@ -1511,10 +1898,25 @@
         const products = {
             perifericos: [
                 {
+                    name: "Cabo Profissional Para Microfone Xlr P10 5 Metros LE-6622",
+                    price: "R$ 89,90",
+                    category: "perifericos",
+                    images: [
+                        "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                        "https://images.unsplash.com/photo-1583394838336-acd977736f90?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                        "https://images.unsplash.com/photo-1518131672697-613becd4fab5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                    ],
+                    brand: "Lelong",
+                    link: "https://blackoutlet2.pay.yampi.com.br/r/TMWAML77RS"
+                },
+                {
                     name: "Mouse Sem Fio Fantech Alcance 10m 2.4ghz",
                     price: "R$ 106,44",
                     category: "perifericos",
-                    image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                    images: [
+                        "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                        "https://images.unsplash.com/photo-1563297007-0686b7003af7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                    ],
                     brand: "Fantech",
                     colors: [
                         { name: "Branco", value: "#FFFFFF", link: "https://blackoutlet2.pay.yampi.com.br/r/HQCTY4L9FO" },
@@ -1525,7 +1927,10 @@
                     name: "Mouse Sem Fio Fantech Forma Confortável",
                     price: "R$ 106,44",
                     category: "perifericos",
-                    image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                    images: [
+                        "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                        "https://images.unsplash.com/photo-1563297007-0686b7003af7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                    ],
                     brand: "Fantech",
                     colors: [
                         { name: "Branco", value: "#FFFFFF", link: "https://blackoutlet2.pay.yampi.com.br/r/E762SL5YFL" },
@@ -1536,7 +1941,9 @@
                     name: "Mouse para Jogos Macro RGB Fantech Phantom X15 7 Botões",
                     price: "R$ 106,44",
                     category: "perifericos",
-                    image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                    images: [
+                        "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                    ],
                     brand: "Fantech",
                     link: "https://blackoutlet2.pay.yampi.com.br/r/GNU2L48YV0"
                 },
@@ -1544,7 +1951,9 @@
                     name: "Mouse Gamer Jogo Macro Crypto VX7 Space Fantech 8000DPI",
                     price: "R$ 106,44",
                     category: "perifericos",
-                    image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                    images: [
+                        "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                    ],
                     brand: "Fantech",
                     link: "https://blackoutlet2.pay.yampi.com.br/r/CCRUQW0NN9"
                 },
@@ -1552,7 +1961,9 @@
                     name: "Mouse Gamer Jogo Macro Crypto VX7 Fantech 8000DPI 6 Botões",
                     price: "R$ 106,44",
                     category: "perifericos",
-                    image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                    images: [
+                        "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                    ],
                     brand: "Fantech",
                     link: "https://blackoutlet2.pay.yampi.com.br/r/O5DKJ0NYLM"
                 },
@@ -1560,7 +1971,9 @@
                     name: "Mouse Para Jogos Profissional Fantech G13 Rhasta Ii 2400Dpi",
                     price: "R$ 106,44",
                     category: "perifericos",
-                    image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                    images: [
+                        "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                    ],
                     brand: "Fantech",
                     link: "https://blackoutlet2.pay.yampi.com.br/r/ERBPN5S9RR"
                 },
@@ -1568,7 +1981,9 @@
                     name: "Mouse Gamer Jogo Macro RGB Fantech Thor X9 7 Botões 4800DPI",
                     price: "R$ 106,44",
                     category: "perifericos",
-                    image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                    images: [
+                        "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                    ],
                     brand: "Fantech",
                     link: "https://blackoutlet2.pay.yampi.com.br/r/CTW1MSP979"
                 },
@@ -1576,7 +1991,9 @@
                     name: "Mouse Gamer Evolut Predator Eg103Rb 2400 Dpi Usb Led 3 Cores",
                     price: "R$ 106,44",
                     category: "perifericos",
-                    image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                    images: [
+                        "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                    ],
                     brand: "Evolut",
                     link: "https://blackoutlet2.pay.yampi.com.br/r/8KVJXMLWL6"
                 },
@@ -1584,7 +2001,9 @@
                     name: "Mouse Gamer Evolut Eg-103rb Predator Rgb 2400 Dpi 06 Botoes",
                     price: "R$ 106,44",
                     category: "perifericos",
-                    image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                    images: [
+                        "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                    ],
                     brand: "Evolut",
                     link: "https://blackoutlet2.pay.yampi.com.br/r/I82FLU0NVR"
                 },
@@ -1592,7 +2011,9 @@
                     name: "Mouse Pad Gamer Grande 44 x 35 cm Fantech Sven MP44",
                     price: "R$ 117,30",
                     category: "perifericos",
-                    image: "https://images.unsplash.com/photo-1593640408182-31c70c8268f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                    images: [
+                        "https://images.unsplash.com/photo-1593640408182-31c70c8268f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                    ],
                     brand: "Fantech",
                     link: "https://blackoutlet2.pay.yampi.com.br/r/7MJGOQKP90"
                 },
@@ -1600,7 +2021,9 @@
                     name: "Mouse Pad Gamer Grande Largo 80 x 30 cm Fantech Sven MP80",
                     price: "R$ 117,30",
                     category: "perifericos",
-                    image: "https://images.unsplash.com/photo-1593640408182-31c70c8268f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                    images: [
+                        "https://images.unsplash.com/photo-1593640408182-31c70c8268f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                    ],
                     brand: "Fantech",
                     link: "https://blackoutlet2.pay.yampi.com.br/r/6AQ647SRNY"
                 },
@@ -1608,7 +2031,9 @@
                     name: "KIT TECLADO E MOUSE SEM FIO MULTILASER TECLAS FLUTUANTES PRETO TC251",
                     price: "R$ 238,00",
                     category: "perifericos",
-                    image: "https://images.unsplash.com/photo-1605773527852-c546a8584ea3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                    images: [
+                        "https://images.unsplash.com/photo-1605773527852-c546a8584ea3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                    ],
                     brand: "Multilaser",
                     link: "https://blackoutlet2.pay.yampi.com.br/r/ISM9AI5GJL"
                 },
@@ -1616,7 +2041,9 @@
                     name: "Kit Teclado e Mouse Teclas Silenciosas Fantech KM-100",
                     price: "R$ 238,00",
                     category: "perifericos",
-                    image: "https://images.unsplash.com/photo-1605773527852-c546a8584ea3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                    images: [
+                        "https://images.unsplash.com/photo-1605773527852-c546a8584ea3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                    ],
                     brand: "Fantech",
                     link: "https://blackoutlet2.pay.yampi.com.br/r/9UPAUXKG4F"
                 },
@@ -1624,7 +2051,9 @@
                     name: "Headset Gamer Captain 7.1 USB Space Edition Fantech HG11",
                     price: "R$ 382,44",
                     category: "perifericos",
-                    image: "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                    images: [
+                        "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                    ],
                     brand: "Fantech",
                     link: "https://blackoutlet2.pay.yampi.com.br/r/B1FG68URWD"
                 },
@@ -1632,7 +2061,9 @@
                     name: "Headset Gamer Captain 7.1 USB Controle Remoto Fantech HG11",
                     price: "R$ 382,44",
                     category: "perifericos",
-                    image: "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                    images: [
+                        "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                    ],
                     brand: "Fantech",
                     link: "https://blackoutlet2.pay.yampi.com.br/r/QR9V795UYE"
                 },
@@ -1640,7 +2071,9 @@
                     name: "Headset Gamer Sniper 7.1 USB Iluminação RGB Fantech HG16",
                     price: "R$ 382,44",
                     category: "perifericos",
-                    image: "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                    images: [
+                        "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                    ],
                     brand: "Fantech",
                     link: "https://blackoutlet2.pay.yampi.com.br/r/FQVCCDAJFL"
                 },
@@ -1648,7 +2081,9 @@
                     name: "Headset Gamer Captain 7.1 USB RGB Virtual PC Fantech HG15",
                     price: "R$ 382,44",
                     category: "perifericos",
-                    image: "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                    images: [
+                        "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                    ],
                     brand: "Fantech",
                     link: "https://blackoutlet2.pay.yampi.com.br/r/AWGCJ89LEK"
                 },
@@ -1656,7 +2091,9 @@
                     name: "Microfone De Mesa USB Para Computador Notebook",
                     price: "R$ 290,00",
                     category: "perifericos",
-                    image: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                    images: [
+                        "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                    ],
                     brand: "Genérico",
                     link: "https://blackoutlet2.pay.yampi.com.br/r/J2AUJM8CZQ"
                 },
@@ -1664,17 +2101,11 @@
                     name: "Microfones Dinâmico Knup Alta Definição Kit Com 2 Unidades M0015",
                     price: "R$ 290,00",
                     category: "perifericos",
-                    image: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                    images: [
+                        "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                    ],
                     brand: "Knup",
                     link: "https://blackoutlet2.pay.yampi.com.br/r/OZDI08LNNC"
-                },
-                {
-                    name: "Cabo Profissional Para Microfone Xlr / P10 5 Metros LE-6622",
-                    price: "R$ 89,90",
-                    category: "perifericos",
-                    image: "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-                    brand: "Lelong",
-                    link: "https://blackoutlet2.pay.yampi.com.br/r/TMWAML77RS"
                 }
             ],
             fones: [
@@ -1682,7 +2113,9 @@
                     name: "Fone Hrebos Headphone Com Fio HS-377",
                     price: "R$ 99,00",
                     category: "fones",
-                    image: "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                    images: [
+                        "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                    ],
                     brand: "Hrebos",
                     link: "https://blackoutlet2.pay.yampi.com.br/r/O44OAXAT0R"
                 },
@@ -1690,7 +2123,9 @@
                     name: "Fone Bluetooth Basike TWS Original Estéreo Alta Definição",
                     price: "R$ 127,00",
                     category: "fones",
-                    image: "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                    images: [
+                        "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                    ],
                     brand: "Basike",
                     colors: [
                         { name: "Preto", value: "#212121", link: "https://blackoutlet2.pay.yampi.com.br/r/RI2URPS10D" },
@@ -1701,7 +2136,9 @@
                     name: "Fone Kingo S6 Com Fio Estéreo",
                     price: "R$ 23,00",
                     category: "fones",
-                    image: "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                    images: [
+                        "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                    ],
                     brand: "Kingo",
                     link: "https://blackoutlet2.pay.yampi.com.br/r/QAFZ5RZRQA"
                 },
@@ -1709,7 +2146,9 @@
                     name: "Fone de Ouvido Philips TAH2209",
                     price: "R$ 303,12",
                     category: "fones",
-                    image: "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                    images: [
+                        "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                    ],
                     brand: "Philips",
                     link: "https://blackoutlet2.pay.yampi.com.br/r/FZ8JPPSBW5"
                 },
@@ -1717,50 +2156,138 @@
                     name: "Fone AlphaGold Para Lightning",
                     price: "R$ 79,02",
                     category: "fones",
-                    image: "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                    images: [
+                        "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                    ],
                     brand: "AlphaGold",
                     link: "https://blackoutlet2.pay.yampi.com.br/r/7WDXC06EB0"
                 },
                 {
-                    name: "Fone Headset Gamer Mox HP90",
-                    price: "R$ 193,00",
-                    category: "fones",
-                    image: "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-                    brand: "Mox",
-                    colors: [
-                        { name: "Preto", value: "#212121", link: "https://blackoutlet2.pay.yampi.com.br/r/CH96QCQ3C3" },
-                        { name: "Vermelho", value: "#F44336", link: "https://blackoutlet2.pay.yampi.com.br/r/TKMUH9ETLK" }
-                    ]
-                },
-                {
-                    name: "Fone Bluetooth Aiwa Estéreo",
+                    name: "Fone Bluetooth Aiwa Estéreo Alta Definição",
                     price: "R$ 285,00",
                     category: "fones",
-                    image: "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                    images: [
+                        "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                    ],
                     brand: "Aiwa",
                     link: "https://blackoutlet2.pay.yampi.com.br/r/HPSLCMUU4X"
                 },
                 {
-                    name: "Fone Redmi AirDots S",
-                    price: "R$ 240,00",
+                    name: "Fone Bluetooth Basike Original In-Ear Alta Performance",
+                    price: "R$ 128,00",
                     category: "fones",
-                    image: "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-                    brand: "Redmi",
-                    link: "https://blackoutlet2.pay.yampi.com.br/r/LYGTGNLIMH"
+                    images: [
+                        "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                    ],
+                    brand: "Basike",
+                    link: "https://blackoutlet2.pay.yampi.com.br/r/OFXJQYZOKI"
                 },
                 {
-                    name: "Fone Bluetooth Hrebos Esportivo",
+                    name: "Fone Bluetooth Basike TWS Estéreo Alta Definição",
+                    price: "R$ 128,00",
+                    category: "fones",
+                    images: [
+                        "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                    ],
+                    brand: "Basike",
+                    link: "https://blackoutlet2.pay.yampi.com.br/r/CXA6R0VSI3"
+                },
+                {
+                    name: "Fone Com Fio Intra-Auricular Com Borrachinha",
+                    price: "R$ 128,00",
+                    category: "fones",
+                    images: [
+                        "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                    ],
+                    brand: "PMCELL",
+                    link: "https://blackoutlet2.pay.yampi.com.br/r/M91UKXKHGT"
+                },
+                {
+                    name: "Fone De Ouvido Bluetooth Hogwarts Harry Potter Letron Preto",
+                    price: "R$ 128,00",
+                    category: "fones",
+                    images: [
+                        "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                    ],
+                    brand: "Letron",
+                    link: "https://blackoutlet2.pay.yampi.com.br/r/OYG9T11YZY"
+                },
+                {
+                    name: "Fone De Ouvido Bluetooth Hrebos Esportivo",
                     price: "R$ 78,00",
                     category: "fones",
-                    image: "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                    images: [
+                        "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                    ],
                     brand: "Hrebos",
                     link: "https://blackoutlet2.pay.yampi.com.br/r/7TT8ZJSTOT"
                 },
                 {
-                    name: "Fone Infantil Animais Fofos",
+                    name: "Fone De Ouvido Bluetooth TWS Sem Fio Fortrek",
                     price: "R$ 128,00",
                     category: "fones",
-                    image: "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                    images: [
+                        "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                    ],
+                    brand: "Fortrek",
+                    link: "https://blackoutlet2.pay.yampi.com.br/r/BWHYD49XTY"
+                },
+                {
+                    name: "Fone De Ouvido Choki Com Microfone Headset Plug P2",
+                    price: "R$ 128,00",
+                    category: "fones",
+                    images: [
+                        "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                    ],
+                    brand: "Choki",
+                    link: "https://blackoutlet2.pay.yampi.com.br/r/9KMDV7LE3G"
+                },
+                {
+                    name: "Fone De Ouvido Com Fio 1,2 Metros P2 Kapbom KA-719",
+                    price: "R$ 128,00",
+                    category: "fones",
+                    images: [
+                        "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                    ],
+                    brand: "Kapbom",
+                    colors: [
+                        { name: "Roxo", value: "#8A2BE2", link: "https://blackoutlet2.pay.yampi.com.br/r/SNCYO4LJ9H" },
+                        { name: "Amarelo", value: "#FFEB3B", link: "https://blackoutlet2.pay.yampi.com.br/r/S81MW4Q901" },
+                        { name: "Azul", value: "#2196F3", link: "https://blackoutlet2.pay.yampi.com.br/r/3AYHNOM5PI" }
+                    ]
+                },
+                {
+                    name: "Fone De Ouvido Com Fio Entrada Lightning Hrebos HS-360",
+                    price: "R$ 128,00",
+                    category: "fones",
+                    images: [
+                        "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                    ],
+                    brand: "Hrebos",
+                    link: "https://blackoutlet2.pay.yampi.com.br/r/KKR9A52M6H"
+                },
+                {
+                    name: "Fone De Ouvido Infantil Com Fio E Case Animais Fofos",
+                    price: "R$ 128,00",
+                    category: "fones",
+                    images: [
+                        "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                    ],
+                    brand: "Xtrad",
+                    animals: [
+                        { name: "Porco", icon: "🐷", link: "https://blackoutlet2.pay.yampi.com.br/r/4PYN4PLTU6" },
+                        { name: "Panda", icon: "🐼", link: "https://blackoutlet2.pay.yampi.com.br/r/56YD8RA5GG" },
+                        { name: "Pato", icon: "🦆", link: "https://blackoutlet2.pay.yampi.com.br/r/1PH5690TXY" },
+                        { name: "Tigre", icon: "🐯", link: "https://blackoutlet2.pay.yampi.com.br/r/BQ5VU7EW7C" }
+                    ]
+                },
+                {
+                    name: "Fone De Ouvido Infantil Sem Fio Animais Fofos",
+                    price: "R$ 128,00",
+                    category: "fones",
+                    images: [
+                        "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                    ],
                     brand: "Xtrad",
                     animals: [
                         { name: "Panda", icon: "🐼", link: "https://blackoutlet2.pay.yampi.com.br/r/8HYQ0LK2W0" },
@@ -1770,112 +2297,52 @@
                     ]
                 },
                 {
-                    name: "Fone De Ouvido Com Fio 1,2 Metros P2 Kapbom KA-719",
+                    name: "Fone De Ouvido Knup Com Microfone Headset Gamer LED RGB",
                     price: "R$ 128,00",
                     category: "fones",
-                    image: "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-                    brand: "Kapbom",
-                    colors: [
-                        { name: "Roxo", value: "#8A2BE2", link: "https://blackoutlet2.pay.yampi.com.br/r/SNCYO4LJ9H" },
-                        { name: "Amarelo", value: "#FFEB3B", link: "https://blackoutlet2.pay.yampi.com.br/r/S81MW4Q901" },
-                        { name: "Azul", value: "#2196F3", link: "https://blackoutlet2.pay.yampi.com.br/r/3AYHNOM5PI" }
-                    ]
+                    images: [
+                        "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                    ],
+                    brand: "Knup",
+                    link: "https://blackoutlet2.pay.yampi.com.br/r/4MG2YWKY27"
                 },
                 {
-                    name: "Fone de Ouvido Estéreo Com Fio P3 Som Alta Definição Lelong LE-0220",
+                    name: "Fone De Ouvido Sem Fio Redmi AirDots 2 Preto",
                     price: "R$ 128,00",
                     category: "fones",
-                    image: "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-                    brand: "Lelong",
-                    colors: [
-                        { name: "Vermelho", value: "#F44336", link: "https://blackoutlet2.pay.yampi.com.br/r/Q37PI2UMDZ" },
-                        { name: "Azul", value: "#2196F3", link: "https://blackoutlet2.pay.yampi.com.br/r/GHUIQROVF7" },
-                        { name: "Cinza", value: "#9E9E9E", link: "https://blackoutlet2.pay.yampi.com.br/r/CGO6506GGA" }
-                    ]
+                    images: [
+                        "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                    ],
+                    brand: "Redmi",
+                    link: "https://blackoutlet2.pay.yampi.com.br/r/66U4COEI77"
                 },
                 {
-                    name: "Fone Headset Gamer Mox Com Fio Conector P3 USB",
+                    name: "Fone De Ouvido Sem Fio Redmi AirDots S Preto",
+                    price: "R$ 240,00",
+                    category: "fones",
+                    images: [
+                        "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                    ],
+                    brand: "Redmi",
+                    link: "https://blackoutlet2.pay.yampi.com.br/r/LYGTGNLIMH"
+                },
+                {
+                    name: "Fone Headset Com Fio Conector P3 Mox MO-HP20",
                     price: "R$ 128,00",
                     category: "fones",
-                    image: "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                    images: [
+                        "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                    ],
                     brand: "Mox",
-                    colors: [
-                        { name: "Preto", value: "#212121", link: "https://blackoutlet2.pay.yampi.com.br/r/CH96QCQ3C3" },
-                        { name: "Vermelho", value: "#F44336", link: "https://blackoutlet2.pay.yampi.com.br/r/TKMUH9ETLK" }
-                    ]
+                    link: "https://blackoutlet2.pay.yampi.com.br/r/76A63XVJMH"
                 },
                 {
-                    name: "Fone de Ouvido P2 Kingo S9 Com Fio Estéreo",
+                    name: "Fone Headset Gamer Com Fio E Microfone Mox",
                     price: "R$ 128,00",
                     category: "fones",
-                    image: "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-                    brand: "Kingo",
-                    colors: [
-                        { name: "Preto", value: "#212121", link: "https://blackoutlet2.pay.yampi.com.br/r/LKTSHYV0F8" },
-                        { name: "Branco", value: "#FFFFFF", link: "https://blackoutlet2.pay.yampi.com.br/r/JH1HL46Y4F" }
-                    ]
-                },
-                {
-                    name: "Fone de Ouvido Hrebos Para Lightning Com Fio Estéreo HS-35",
-                    price: "R$ 128,00",
-                    category: "fones",
-                    image: "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-                    brand: "Hrebos",
-                    link: "https://blackoutlet2.pay.yampi.com.br/r/D53LWJL0B6"
-                },
-                {
-                    name: "Fone de Ouvido P2 Hrebos Com Fio Branco HS-59",
-                    price: "R$ 128,00",
-                    category: "fones",
-                    image: "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-                    brand: "Hrebos",
-                    link: "https://blackoutlet2.pay.yampi.com.br/r/6TX42UKBPP"
-                },
-                {
-                    name: "Fone de Ouvido P2 Hrebos Com Fio Extreme Sound HS-82",
-                    price: "R$ 128,00",
-                    category: "fones",
-                    image: "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-                    brand: "Hrebos",
-                    link: "https://blackoutlet2.pay.yampi.com.br/r/TKMPV6TP8H"
-                },
-                {
-                    name: "Fone de Ouvido Estéreo Com Fio HRebos HS-168",
-                    price: "R$ 128,00",
-                    category: "fones",
-                    image: "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-                    brand: "Hrebos",
-                    link: "https://blackoutlet2.pay.yampi.com.br/r/DIDLD8XIOD"
-                },
-                {
-                    name: "Microfone de Lapela Hrebos Para Lightning Áudio e Vídeo HS-32",
-                    price: "R$ 128,00",
-                    category: "fones",
-                    image: "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-                    brand: "Hrebos",
-                    link: "https://blackoutlet2.pay.yampi.com.br/r/EVGB3MFHP7"
-                },
-                {
-                    name: "Fone de Ouvido P2 Hrebos Com Fio Preto HS-59",
-                    price: "R$ 128,00",
-                    category: "fones",
-                    image: "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-                    brand: "Hrebos",
-                    link: "https://blackoutlet2.pay.yampi.com.br/r/5F1630WEL9"
-                },
-                {
-                    name: "Fone Bluetooth Basike Original In-Ear Alta Performance",
-                    price: "R$ 128,00",
-                    category: "fones",
-                    image: "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-                    brand: "Basike",
-                    link: "https://blackoutlet2.pay.yampi.com.br/r/OFXJQYZOKI"
-                },
-                {
-                    name: "Fone Headset Gamer Com Fio E Microfone Mox MO-HP130",
-                    price: "R$ 128,00",
-                    category: "fones",
-                    image: "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                    images: [
+                        "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                    ],
                     brand: "Mox",
                     colors: [
                         { name: "Preto", value: "#212121", link: "https://blackoutlet2.pay.yampi.com.br/r/LCAT4LL34B" },
@@ -1886,174 +2353,17 @@
                     ]
                 },
                 {
-                    name: "Fone Com Fio Intra-Auricular Com Borrachinha PMCELL FO-11",
+                    name: "Fone Headset Gamer Mox Com Fio Conector P3 USB",
                     price: "R$ 128,00",
                     category: "fones",
-                    image: "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-                    brand: "PMCELL",
-                    link: "https://blackoutlet2.pay.yampi.com.br/r/M91UKXKHGT"
-                },
-                {
-                    name: "Fone De Ouvido Infantil Com Fio E Case Animais Fofos Xtrad LC-882",
-                    price: "R$ 128,00",
-                    category: "fones",
-                    image: "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-                    brand: "Xtrad",
-                    animals: [
-                        { name: "Porco", icon: "🐷", link: "https://blackoutlet2.pay.yampi.com.br/r/4PYN4PLTU6" },
-                        { name: "Panda", icon: "🐼", link: "https://blackoutlet2.pay.yampi.com.br/r/56YD8RA5GG" },
-                        { name: "Pato", icon: "🦆", link: "https://blackoutlet2.pay.yampi.com.br/r/1PH5690TXY" },
-                        { name: "Tigre", icon: "🐯", link: "https://blackoutlet2.pay.yampi.com.br/r/BQ5VU7EW7C" }
-                    ]
-                },
-                {
-                    name: "Fone de Ouvido Com Fio P3 Nenhum Ruído X-Bass Lelong LE-0201",
-                    price: "R$ 128,00",
-                    category: "fones",
-                    image: "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-                    brand: "Lelong",
-                    colors: [
-                        { name: "Branco", value: "#FFFFFF", link: "https://blackoutlet2.pay.yampi.com.br/checkout?skipToCheckout=1&tokenReference=QVH7GE0W6Z" },
-                        { name: "Preto", value: "#212121", link: "https://blackoutlet2.pay.yampi.com.br/checkout?skipToCheckout=1&tokenReference=8OK9W44IFZ" },
-                        { name: "Vermelho", value: "#F44336", link: "https://blackoutlet2.pay.yampi.com.br/checkout?skipToCheckout=1&tokenReference=JFM39YODHG" },
-                        { name: "Verde", value: "#4CAF50", link: "https://blackoutlet2.pay.yampi.com.br/checkout?skipToCheckout=1&tokenReference=F7UD4FOJI4" }
-                    ]
-                },
-                {
-                    name: "Fone de Ouvido Com Fio P3 Isolamento De Ruído Lelong LE-0209Y",
-                    price: "R$ 128,00",
-                    category: "fones",
-                    image: "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-                    brand: "Lelong",
-                    colors: [
-                        { name: "Vermelho", value: "#F44336", link: "https://blackoutlet2.pay.yampi.com.br/checkout?skipToCheckout=1&tokenReference=CAZP0Y547M" },
-                        { name: "Preto", value: "#212121", link: "https://blackoutlet2.pay.yampi.com.br/checkout?skipToCheckout=1&tokenReference=K6EH81HD6P" },
-                        { name: "Azul", value: "#2196F3", link: "https://blackoutlet2.pay.yampi.com.br/checkout?skipToCheckout=1&tokenReference=MK4R9V9Q00" },
-                        { name: "Branco", value: "#FFFFFF", link: "https://blackoutlet2.pay.yampi.com.br/checkout?skipToCheckout=1&tokenReference=CXWQASYSIE" }
-                    ]
-                },
-                {
-                    name: "Fone de Ouvido P2 Kingo S4 Com Fio Estéreo Preto",
-                    price: "R$ 128,00",
-                    category: "fones",
-                    image: "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-                    brand: "Kingo",
-                    link: "https://blackoutlet2.pay.yampi.com.br/r/M3VWO17WJ6"
-                },
-                {
-                    name: "Fone de Ouvido Tipo C Hrebos Com Fio Estéreo HS-51",
-                    price: "R$ 128,00",
-                    category: "fones",
-                    image: "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-                    brand: "Hrebos",
-                    link: "https://blackoutlet2.pay.yampi.com.br/r/6YPA08OPQ4"
-                },
-                {
-                    name: "Fone de Ouvido P2 Hrebos Com Fio Estéreo HS-67",
-                    price: "R$ 128,00",
-                    category: "fones",
-                    image: "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-                    brand: "Hrebos",
-                    link: "https://blackoutlet2.pay.yampi.com.br/r/2S56ASP6BT"
-                },
-                {
-                    name: "Fone de Ouvido P2 Hrebos Com Fio Estéreo HS-131",
-                    price: "R$ 128,00",
-                    category: "fones",
-                    image: "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-                    brand: "Hrebos",
-                    link: "https://blackoutlet2.pay.yampi.com.br/r/I5SISOYWBQ"
-                },
-                {
-                    name: "Microfone de Lapela P3 3.5mm Hrebos Áudio e Vídeo HS-30",
-                    price: "R$ 128,00",
-                    category: "fones",
-                    image: "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-                    brand: "Hrebos",
-                    link: "https://blackoutlet2.pay.yampi.com.br/r/CCLQDOP0G2"
-                },
-                {
-                    name: "Fone De Ouvido Sem Fio Redmi AirDots 2 Preto",
-                    price: "R$ 128,00",
-                    category: "fones",
-                    image: "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-                    brand: "Redmi",
-                    link: "https://blackoutlet2.pay.yampi.com.br/r/66U4COEI77"
-                },
-                {
-                    name: "Fone De Ouvido Choki Com Microfone Headset Plug P2 FN-255",
-                    price: "R$ 128,00",
-                    category: "fones",
-                    image: "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-                    brand: "Choki",
-                    link: "https://blackoutlet2.pay.yampi.com.br/r/9KMDV7LE3G"
-                },
-                {
-                    name: "Fone Bluetooth Basike TWS Estéreo Alta Definição Ba-FON6694",
-                    price: "R$ 128,00",
-                    category: "fones",
-                    image: "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-                    brand: "Basike",
-                    link: "https://blackoutlet2.pay.yampi.com.br/r/CXA6R0VSI3"
-                },
-                {
-                    name: "Fone De Ouvido Knup Com Microfone Headset Gamer LED RGB 487",
-                    price: "R$ 128,00",
-                    category: "fones",
-                    image: "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-                    brand: "Knup",
-                    link: "https://blackoutlet2.pay.yampi.com.br/r/4MG2YWKY27"
-                },
-                {
-                    name: "Fone de ouvido gamer Altomex A-302",
-                    price: "R$ 128,00",
-                    category: "fones",
-                    image: "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-                    brand: "Altomex",
-                    colors: [
-                        { name: "Azul", value: "#2196F3", link: "https://blackoutlet2.pay.yampi.com.br/r/9YVR9JCQ5F" },
-                        { name: "Vermelho", value: "#F44336", link: "https://blackoutlet2.pay.yampi.com.br/r/C00E6F0S9V" }
-                    ]
-                },
-                {
-                    name: "Fone de Ouvido Bluetooth Hogwarts Harry Potter Letron Preto",
-                    price: "R$ 128,00",
-                    category: "fones",
-                    image: "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-                    brand: "Letron",
-                    link: "https://blackoutlet2.pay.yampi.com.br/r/OYG9T11YZY"
-                },
-                {
-                    name: "Fone de Ouvido Bluetooth TWS Sem Fio Fortrek HWS1",
-                    price: "R$ 128,00",
-                    category: "fones",
-                    image: "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-                    brand: "Fortrek",
-                    link: "https://blackoutlet2.pay.yampi.com.br/r/BWHYD49XTY"
-                },
-                {
-                    name: "Fone de Ouvido Pix Essential Flat Com Microfone Preto",
-                    price: "R$ 128,00",
-                    category: "fones",
-                    image: "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-                    brand: "Pix",
-                    link: "https://blackoutlet2.pay.yampi.com.br/r/DLX8S5721Q"
-                },
-                {
-                    name: "Fone De Ouvido Com Fio Entrada Lightning Hrebos HS-360",
-                    price: "R$ 128,00",
-                    category: "fones",
-                    image: "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-                    brand: "Hrebos",
-                    link: "https://blackoutlet2.pay.yampi.com.br/r/KKR9A52M6H"
-                },
-                {
-                    name: "Fone Headset Com Fio Conector P3 Mox MO-HP20",
-                    price: "R$ 128,00",
-                    category: "fones",
-                    image: "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                    images: [
+                        "https://images.unsplash.com/photo-1599669454699-248893623440?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                    ],
                     brand: "Mox",
-                    link: "https://blackoutlet2.pay.yampi.com.br/r/76A63XVJMH"
+                    colors: [
+                        { name: "Preto", value: "#212121", link: "https://blackoutlet2.pay.yampi.com.br/r/CH96QCQ3C3" },
+                        { name: "Vermelho", value: "#F44336", link: "https://blackoutlet2.pay.yampi.com.br/r/TKMUH9ETLK" }
+                    ]
                 }
             ],
             cameras: [
@@ -2061,7 +2371,11 @@
                     name: "Câmera IT Blue Astronauta Visão Noturna 360º WiFi SC-B11",
                     price: "R$ 406,00",
                     category: "cameras",
-                    image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                    images: [
+                        "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                        "https://images.unsplash.com/photo-1520390138845-7b0c36332a58?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                        "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                    ],
                     brand: "IT Blue",
                     link: "https://blackoutlet2.pay.yampi.com.br/r/KP2ZPKQHC2"
                 },
@@ -2069,15 +2383,144 @@
                     name: "Processador Intel Xeon E5-2630 V4 2.20ghz 10-core",
                     price: "R$ 2.499,00",
                     category: "cameras",
-                    image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                    images: [
+                        "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                    ],
                     brand: "Intel",
                     link: "https://blackoutlet2.pay.yampi.com.br/r/LMQ0EZR8SX"
                 }
             ]
         };
 
+        // Carrinho de compras
+        let cart = [];
+        let cartCount = 0;
+
+        // Função para atualizar o contador do carrinho
+        function updateCartCount() {
+            cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+            document.querySelector('.cart-count').textContent = cartCount;
+        }
+
+        // Função para adicionar item ao carrinho
+        function addToCart(product, selectedColor, selectedAnimal, quantity) {
+            const existingItem = cart.find(item => 
+                item.name === product.name && 
+                item.color === selectedColor && 
+                item.animal === selectedAnimal
+            );
+
+            if (existingItem) {
+                existingItem.quantity += quantity;
+            } else {
+                cart.push({
+                    name: product.name,
+                    price: product.price,
+                    image: product.images[0],
+                    color: selectedColor,
+                    animal: selectedAnimal,
+                    quantity: quantity
+                });
+            }
+
+            updateCartCount();
+            updateCartDisplay();
+            showNotification('Produto adicionado ao carrinho!');
+        }
+
+        // Função para remover item do carrinho
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartCount();
+            updateCartDisplay();
+        }
+
+        // Função para atualizar a exibição do carrinho
+        function updateCartDisplay() {
+            const cartItems = document.getElementById('cartItems');
+            const cartEmpty = document.getElementById('cartEmpty');
+            const cartTotal = document.getElementById('cartTotal');
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = '';
+                cartEmpty.style.display = 'block';
+                cartTotal.textContent = 'R$ 0,00';
+                return;
+            }
+
+            cartEmpty.style.display = 'none';
+            
+            let total = 0;
+            cartItems.innerHTML = '';
+
+            cart.forEach((item, index) => {
+                const priceValue = parseFloat(item.price.replace('R$ ', '').replace(',', '.'));
+                total += priceValue * item.quantity;
+
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <div class="cart-item-image">
+                        <img src="${item.image}" alt="${item.name}">
+                    </div>
+                    <div class="cart-item-details">
+                        <div class="cart-item-name">${item.name}</div>
+                        ${item.color ? `<div class="cart-item-color">Cor: ${item.color}</div>` : ''}
+                        ${item.animal ? `<div class="cart-item-animal">Animal: ${item.animal}</div>` : ''}
+                        <div class="cart-item-price">${item.price} x ${item.quantity}</div>
+                    </div>
+                    <button class="cart-item-remove" data-index="${index}">
+                        <i class="fas fa-times"></i>
+                    </button>
+                `;
+                cartItems.appendChild(cartItem);
+            });
+
+            cartTotal.textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
+
+            // Adicionar eventos aos botões de remover
+            document.querySelectorAll('.cart-item-remove').forEach(button => {
+                button.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    removeFromCart(index);
+                });
+            });
+        }
+
+        // Função para exibir notificação
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: var(--gradient);
+                color: white;
+                padding: 1rem 1.5rem;
+                border-radius: 10px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+                z-index: 1002;
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+            `;
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+
+            setTimeout(() => {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+
         // Função para renderizar produtos
-        function renderProducts(category = 'all') {
+        function renderProducts(category = 'all', searchTerm = '') {
             const container = document.getElementById('products-container');
             container.innerHTML = '';
             
@@ -2090,6 +2533,25 @@
                 });
             } else {
                 productsToRender = products[category] || [];
+            }
+            
+            // Aplicar filtro de busca se houver
+            if (searchTerm) {
+                const term = searchTerm.toLowerCase();
+                productsToRender = productsToRender.filter(product => 
+                    product.name.toLowerCase().includes(term) || 
+                    product.brand.toLowerCase().includes(term)
+                );
+            }
+            
+            if (productsToRender.length === 0) {
+                container.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 3rem; color: #aaa;">
+                        <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+                        <p>Nenhum produto encontrado para sua busca.</p>
+                    </div>
+                `;
+                return;
             }
             
             productsToRender.forEach(product => {
@@ -2111,7 +2573,7 @@
                 
                 productCard.innerHTML = `
                     <div class="product-image">
-                        <img src="${product.image}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/500x300/0f0f1a/8a2be2?text=Imagem+Indisponível'">
+                        <img src="${product.images[0]}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/500x300/0f0f1a/8a2be2?text=Imagem+Indisponível'">
                     </div>
                     <div class="product-info">
                         <h3 class="product-title">${product.name}</h3>
@@ -2136,10 +2598,74 @@
             });
         }
 
+        // Função para inicializar carrossel
+        function initCarousel(images) {
+            const carouselTrack = document.getElementById('carouselTrack');
+            const carouselIndicators = document.getElementById('carouselIndicators');
+            
+            // Limpar carrossel anterior
+            carouselTrack.innerHTML = '';
+            carouselIndicators.innerHTML = '';
+            
+            // Adicionar slides
+            images.forEach((image, index) => {
+                const slide = document.createElement('div');
+                slide.className = `carousel-slide ${index === 0 ? 'active' : ''}`;
+                slide.innerHTML = `<img src="${image}" alt="Imagem do produto">`;
+                carouselTrack.appendChild(slide);
+                
+                // Adicionar indicador
+                const indicator = document.createElement('span');
+                indicator.className = `carousel-indicator ${index === 0 ? 'active' : ''}`;
+                indicator.dataset.index = index;
+                indicator.addEventListener('click', () => goToSlide(index));
+                carouselIndicators.appendChild(indicator);
+            });
+            
+            // Configurar navegação
+            let currentSlide = 0;
+            
+            function goToSlide(index) {
+                currentSlide = index;
+                carouselTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+                
+                // Atualizar indicadores
+                document.querySelectorAll('.carousel-slide').forEach((slide, i) => {
+                    slide.classList.toggle('active', i === currentSlide);
+                });
+                document.querySelectorAll('.carousel-indicator').forEach((indicator, i) => {
+                    indicator.classList.toggle('active', i === currentSlide);
+                });
+            }
+            
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % images.length;
+                goToSlide(currentSlide);
+            }
+            
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + images.length) % images.length;
+                goToSlide(currentSlide);
+            }
+            
+            // Adicionar eventos aos botões
+            document.getElementById('carouselNext').addEventListener('click', nextSlide);
+            document.getElementById('carouselPrev').addEventListener('click', prevSlide);
+            
+            // Auto-avançar slides (opcional)
+            let slideInterval = setInterval(nextSlide, 5000);
+            
+            // Pausar auto-avanço quando o mouse estiver sobre o carrossel
+            const carousel = document.getElementById('productCarousel');
+            carousel.addEventListener('mouseenter', () => clearInterval(slideInterval));
+            carousel.addEventListener('mouseleave', () => {
+                slideInterval = setInterval(nextSlide, 5000);
+            });
+        }
+
         // Função para abrir o modal de detalhes do produto
         function openProductModal(product) {
             const modal = document.getElementById('productModal');
-            const modalImage = document.getElementById('modalProductImage');
             const modalBrand = document.getElementById('modalProductBrand');
             const modalName = document.getElementById('modalProductName');
             const modalPrice = document.getElementById('modalProductPrice');
@@ -2150,15 +2676,22 @@
             const quantityDisplay = document.getElementById('quantityDisplay');
             const totalPrice = document.getElementById('totalPrice');
             const buyNowButton = document.getElementById('buyNowButton');
+            const addToCartButton = document.getElementById('addToCartButton');
             
             // Preencher os dados do produto
-            modalImage.src = product.image;
             modalBrand.textContent = product.brand;
             modalName.textContent = product.name;
             modalPrice.textContent = product.price;
             
+            // Inicializar carrossel com as imagens do produto
+            initCarousel(product.images);
+            
             // Variável para armazenar o link atual do produto
             let currentProductLink = product.link || '';
+            
+            // Variáveis para armazenar seleções
+            let selectedColor = '';
+            let selectedAnimal = '';
             
             // Configurar opções de cor
             if (product.colors && product.colors.length > 0) {
@@ -2169,10 +2702,12 @@
                     colorOption.style.backgroundColor = color.value;
                     colorOption.title = color.name;
                     colorOption.dataset.link = color.link;
+                    colorOption.dataset.name = color.name;
                     
                     // Definir o link inicial como o primeiro da lista
                     if (index === 0) {
                         currentProductLink = color.link;
+                        selectedColor = color.name;
                     }
                     
                     colorOption.addEventListener('click', function() {
@@ -2181,6 +2716,7 @@
                         });
                         this.classList.add('active');
                         currentProductLink = this.dataset.link;
+                        selectedColor = this.dataset.name;
                     });
                     modalColorOptions.appendChild(colorOption);
                 });
@@ -2200,10 +2736,12 @@
                         <div class="animal-name">${animal.name}</div>
                     `;
                     animalOption.dataset.link = animal.link;
+                    animalOption.dataset.name = animal.name;
                     
                     // Definir o link inicial como o primeiro da lista
                     if (index === 0) {
                         currentProductLink = animal.link;
+                        selectedAnimal = animal.name;
                     }
                     
                     animalOption.addEventListener('click', function() {
@@ -2212,6 +2750,7 @@
                         });
                         this.classList.add('active');
                         currentProductLink = this.dataset.link;
+                        selectedAnimal = this.dataset.name;
                     });
                     modalAnimalOptions.appendChild(animalOption);
                 });
@@ -2251,9 +2790,9 @@
             };
             
             // Configurar botão "Adicionar ao Carrinho"
-            document.getElementById('addToCartButton').onclick = function() {
-                // Simular adição ao carrinho
-                alert(`Produto "${product.name}" adicionado ao carrinho!`);
+            addToCartButton.onclick = function() {
+                addToCart(product, selectedColor, selectedAnimal, quantity);
+                modal.classList.remove('active');
             };
             
             // Abrir o modal
@@ -2288,6 +2827,65 @@
         function goToHome() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+
+        // Toggle da barra de busca
+        document.getElementById('searchToggle').addEventListener('click', function() {
+            const searchContainer = document.getElementById('searchContainer');
+            searchContainer.style.display = searchContainer.style.display === 'none' ? 'flex' : 'none';
+        });
+
+        // Busca de produtos
+        document.getElementById('searchButton').addEventListener('click', function() {
+            const searchTerm = document.getElementById('searchInput').value;
+            const activeCategory = document.querySelector('.category-filter.active').dataset.category;
+            renderProducts(activeCategory, searchTerm);
+        });
+
+        document.getElementById('searchInput').addEventListener('keyup', function(e) {
+            if (e.key === 'Enter') {
+                const searchTerm = this.value;
+                const activeCategory = document.querySelector('.category-filter.active').dataset.category;
+                renderProducts(activeCategory, searchTerm);
+            }
+        });
+
+        // Toggle do carrinho
+        document.getElementById('cartToggle').addEventListener('click', function() {
+            document.getElementById('cartSidebar').classList.add('active');
+        });
+
+        document.getElementById('closeCart').addEventListener('click', function() {
+            document.getElementById('cartSidebar').classList.remove('active');
+        });
+
+        // Finalizar compra
+        document.getElementById('checkoutButton').addEventListener('click', function() {
+            if (cart.length === 0) {
+                showNotification('Seu carrinho está vazio!');
+                return;
+            }
+            
+            // Simular processo de checkout
+            showNotification('Redirecionando para o checkout...');
+            setTimeout(() => {
+                // Em um cenário real, aqui seria o redirecionamento para a página de checkout
+                alert('Compra finalizada com sucesso! Em um cenário real, você seria redirecionado para a página de pagamento.');
+                cart = [];
+                updateCartCount();
+                updateCartDisplay();
+                document.getElementById('cartSidebar').classList.remove('active');
+            }, 2000);
+        });
+
+        // Efeito de scroll no header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
     </script>
 </body>
 </html>
