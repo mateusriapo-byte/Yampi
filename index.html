@@ -2443,24 +2443,26 @@
                     ]
                 },
                 {
-                    name: "Fone de Ouvido Gamer Altomex A-302 Azul Com Preto",
+                    name: "Fone de Ouvido Gamer Altomex A-302",
                     price: "R$ 128,00",
                     category: "fones",
                     images: [
-                        "fone-de-ouvido-gamer-altomex-a-302-azul-com-preto.jpg"
-                    ],
-                    brand: "Altomex",
-                    link: "https://blackoutlet2.pay.yampi.com.br/r/9YVR9JCQ5F"
-                },
-                {
-                    name: "Fone de Ouvido Gamer Altomex A-302 Vermelho Com Preto",
-                    price: "R$ 128,00",
-                    category: "fones",
-                    images: [
+                        "fone-de-ouvido-gamer-altomex-a-302-azul-com-preto.jpg",
                         "fone-de-ouvido-gamer-altomex-a-302-vermelho-com-preto.jpg"
                     ],
                     brand: "Altomex",
-                    link: "https://blackoutlet2.pay.yampi.com.br/r/C00E6F0S9V"
+                    colors: [
+                        { 
+                            name: "Azul", 
+                            value: "#2196F3", 
+                            link: "https://blackoutlet2.pay.yampi.com.br/r/9YVR9JCQ5F" 
+                        },
+                        { 
+                            name: "Vermelho", 
+                            value: "#F44336", 
+                            link: "https://blackoutlet2.pay.yampi.com.br/r/C00E6F0S9V" 
+                        }
+                    ]
                 },
                 {
                     name: "Fone de Ouvido Hrebos Para Lightning Com Fio Estéreo HS-35",
@@ -2922,6 +2924,15 @@
                         this.classList.add('active');
                         currentProductLink = this.dataset.link;
                         selectedColor = this.dataset.name;
+                        
+                        // Atualizar a imagem do carrossel para a cor selecionada
+                        const selectedIndex = product.colors.findIndex(c => c.name === selectedColor);
+                        if (selectedIndex >= 0 && product.images[selectedIndex]) {
+                            const carouselTrack = document.getElementById('carouselTrack');
+                            const slides = carouselTrack.querySelectorAll('.carousel-slide');
+                            slides[0].querySelector('img').src = product.images[selectedIndex];
+                            goToSlide(0);
+                        }
                     });
                     modalColorOptions.appendChild(colorOption);
                 });
